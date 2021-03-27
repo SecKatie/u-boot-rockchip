@@ -809,6 +809,23 @@ function pack_images()
 	fi
 }
 
+function unpack_loader
+{
+	if [ -f *_loader_*.bin ]; then
+		echo unpacking artifacts and building idblock.bin
+		rm idblock.bin FlashData FlashBoot FlashHead -f
+		./tools/boot_merger --unpack *_loader_*.bin
+
+		if [ -f FlashHead ];then
+			cat FlashHead FlashData > idblock.bin
+		else
+			./tools/mkimage -n ${PLAT} -T rksd -d FlashData idblock.bin
+		fi
+
+		cat FlashBoot >> idblock.bin
+	fi
+}
+
 function finish()
 {
 	echo
@@ -830,4 +847,5 @@ sub_commands
 clean_files
 make PYTHON=python2 CROSS_COMPILE=${TOOLCHAIN_GCC} all --jobs=${JOB}
 pack_images
+unpack_loader
 finish
