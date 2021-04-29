@@ -66,10 +66,10 @@ OBJ_ARM32=arm-linux-gnueabihf-objdump
 OBJ_ARM64=aarch64-linux-gnu-objdump
 NM_ARM32=arm-linux-gnueabihf-nm
 NM_ARM64=aarch64-linux-gnu-nm
-GCC_ARM32=arm-linux-gnueabihf-
+GCC_ARM32=arm-linux-gnueabi-
 GCC_ARM64=aarch64-linux-gnu-
-TOOLCHAIN_ARM32=../prebuilts/gcc/linux-x86/arm/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin
-TOOLCHAIN_ARM64=../prebuilts/gcc/linux-x86/aarch64/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin
+#TOOLCHAIN_ARM32=../prebuilts/gcc/linux-x86/arm/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin
+#TOOLCHAIN_ARM64=../prebuilts/gcc/linux-x86/aarch64/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin
 
 ########################################### User not touch #############################################
 # Declare global INI file searching index name for every chip, update in select_chip_info()
@@ -85,7 +85,7 @@ INI_LOADER=
 RKBIN=
 
 # Declare global toolchain path for CROSS_COMPILE, updated in select_toolchain()
-TOOLCHAIN_GCC=
+TOOLCHAIN_GCC=aarch64-linux-gnu-
 TOOLCHAIN_NM=
 TOOLCHAIN_OBJDUMP=
 TOOLCHAIN_ADDR2LINE=
@@ -838,7 +838,7 @@ function finish()
 
 process_args $*
 prepare
-select_toolchain
+#select_toolchain
 select_chip_info
 fixup_platform_configure
 select_ini_file
