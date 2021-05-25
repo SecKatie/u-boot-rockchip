@@ -809,18 +809,10 @@ function pack_images()
 	fi
 }
 
-function update_spl
-{
-	if [ -f ./spl/u-boot-spl.bin ]; then
-		echo "Updating SPL in loader binary (rkbin)"
-		cp -v ./spl/u-boot-spl.bin ${RKBIN}/bin/rk35/rk356x_spl_v1.11.bin
-	fi
-}
-
 function unpack_loader
 {
 	if [ -f *_loader_*.bin ]; then
-		echo "Re-packing loader as idblock.bin"
+		echo unpacking artifacts and building idblock.bin
 		rm idblock.bin FlashData FlashBoot FlashHead -f
 		./tools/boot_merger --unpack *_loader_*.bin
 
@@ -854,7 +846,6 @@ handle_args_late
 sub_commands
 clean_files
 make PYTHON=python2 CROSS_COMPILE=${TOOLCHAIN_GCC} all --jobs=${JOB}
-update_spl
 pack_images
 unpack_loader
 finish
