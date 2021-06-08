@@ -85,7 +85,7 @@ INI_LOADER=
 RKBIN=
 
 # Declare global toolchain path for CROSS_COMPILE, updated in select_toolchain()
-TOOLCHAIN_GCC=aarch64-linux-gnu-
+TOOLCHAIN_GCC=$CROSS_COMPILE
 TOOLCHAIN_NM=
 TOOLCHAIN_OBJDUMP=
 TOOLCHAIN_ADDR2LINE=
