@@ -7,8 +7,16 @@
 #include <common.h>
 #include <dwc3-uboot.h>
 #include <usb.h>
+#include <asm/gpio.h>
 
 DECLARE_GLOBAL_DATA_PTR;
+
+int rk_board_init(void)
+{
+	gpio_request(27, "work_led");
+	gpio_direction_output(27, 1);
+	return 0;
+}
 
 #ifdef CONFIG_USB_DWC3
 static struct dwc3_device dwc3_device_data = {
