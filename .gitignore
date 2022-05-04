@@ -87,3 +87,12 @@ GTAGS
 *.orig
 *~
 \#*#
+
+# U-Boot build artifacts
+FlashBoot
+FlashData
+FlashHead
+UsbHead
+rk3566_ddr_1056MHz_v
+rk356x_usbplug_v1
+tools/bmp2gray16
