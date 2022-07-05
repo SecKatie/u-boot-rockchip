@@ -93,9 +93,7 @@
 
 #undef RKIMG_BOOTCOMMAND
 #define RKIMG_BOOTCOMMAND		\
-	"boot_fit;"			\
-	"boot_android ${devtype} ${devnum};" \
-	"run distro_bootcmd;"
+	"sysboot ${devtype} ${devnum}:4 any ${scriptaddr} extlinux.conf;"
 #endif
 
 /* rockchip ohci host driver */

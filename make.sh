@@ -6,6 +6,10 @@
 #
 
 set -e
+
+export CC=clang
+export CPP=clang-cpp
+export CXX=clang++
 JOB=`sed -n "N;/processor/p" /proc/cpuinfo|wc -l`
 SUPPORT_LIST=`ls configs/*[r,p][x,v,k][0-9][0-9]*_defconfig`
 CMD_ARGS=$1
@@ -758,7 +762,7 @@ function pack_fit_image()
 	fi
 
 	if [ "${ARM64_TRUSTZONE}" == "y" ]; then
-		if ! python -c "import elftools" ; then
+		if ! python3 -c "import elftools" ; then
 			echo "ERROR: No python 'pyelftools', please: pip install pyelftools"
 			exit 1
 		fi
@@ -845,7 +849,7 @@ select_ini_file
 handle_args_late
 sub_commands
 clean_files
-make CROSS_COMPILE=${TOOLCHAIN_GCC} all --jobs=${JOB}
+make CROSS_COMPILE=${TOOLCHAIN_GCC} -Wwarning=address all --jobs=${JOB}
 pack_images
 unpack_loader
 finish

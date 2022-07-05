@@ -11,6 +11,8 @@
 #include "trust_merger.h"
 #include "sha2.h"
 
+#define ulong unsigned long
+
 /* #define DEBUG */
 
 static bool gDebug =

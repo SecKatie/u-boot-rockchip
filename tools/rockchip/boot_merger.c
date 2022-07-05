@@ -8,6 +8,8 @@
 #include <sys/stat.h>
 #include <version.h>
 
+#define ulong unsigned long
+
 /* #define USE_P_RC4 */
 
 bool gDebug =
